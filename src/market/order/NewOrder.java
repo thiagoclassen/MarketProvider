@@ -9,24 +9,25 @@ import market.transport.Veiculo;
 
 public class NewOrder {
 	
-	private ArrayList<Product> produtos;
-	private float quantidade;
+	private ArrayList<OrderItem> produtos;
 	private Calendar dataCompra;
 	private Cliente cliente;
 	private Veiculo veiculo;
 	
+	public NewOrder(ArrayList<OrderItem> produtos, Calendar dataCompra, Cliente cliente,
+			Veiculo veiculo) {
+		super();
+		this.produtos = produtos;
+		this.dataCompra = dataCompra;
+		this.cliente = cliente;
+		this.veiculo = veiculo;
+	}
 	
-	public ArrayList<Product> getProdutos() {
+	public ArrayList<OrderItem> getProdutos() {
 		return produtos;
 	}
-	public void setProdutos(ArrayList<Product> produtos) {
+	public void setProdutos(ArrayList<OrderItem> produtos) {
 		this.produtos = produtos;
-	}
-	public float getQuantidade() {
-		return quantidade;
-	}
-	public void setQuantidade(float quantidade) {
-		this.quantidade = quantidade;
 	}
 	public Calendar getDataCompra() {
 		return dataCompra;

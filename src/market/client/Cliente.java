@@ -2,14 +2,20 @@ package market.client;
 
 public class Cliente {
 	
-	private String endereco;
+	private Adress endereco;
 	private String nome;
 	private String telefone;
 	
-	public String getEndereco() {
+	public Cliente(Adress endereco, String nome, String telefone) {
+		this.endereco = endereco;
+		this.nome = nome;
+		this.telefone = telefone;
+	}
+	
+	public Adress getEndereco() {
 		return endereco;
 	}
-	public void setEndereco(String endereco) {
+	public void setEndereco(Adress endereco) {
 		this.endereco = endereco;
 	}
 	public String getNome() {

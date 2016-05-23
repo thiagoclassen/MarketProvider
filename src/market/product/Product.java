@@ -7,6 +7,13 @@ public class Product {
 	private String tipo;
 	private float preco;
 	
+	public Product(String nome, String unidadeDeMedida, String tipo, float preco) {
+		super();
+		this.nome = nome;
+		this.unidadeDeMedida = unidadeDeMedida;
+		this.tipo = tipo;
+		this.preco = preco;
+	}
 	
 	public String getNome() {
 		return nome;
