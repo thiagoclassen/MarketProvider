@@ -24,9 +24,6 @@ public class MarketProvider {
 		
 		NewOrder order = new NewOrder(prods, Calendar.getInstance(), teste, new Veiculo());
 		
-		
-		
-		
 	}
 
 }
