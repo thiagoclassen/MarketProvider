@@ -9,7 +9,6 @@ public class Adress {
 	private String cidade;
 	
 	public Adress(String rua, int nr, int cep, String bairro, String cidade) {
-		super();
 		this.rua = rua;
 		this.nr = nr;
 		this.cep = cep;

@@ -1,12 +1,14 @@
 package market.client;
 
-public class Cliente {
+public class Client {
 	
 	private Adress endereco;
 	private String nome;
 	private String telefone;
 	
-	public Cliente(Adress endereco, String nome, String telefone) {
+	
+	//TODO - Create Builder for Address
+	public Client(Adress endereco, String nome, String telefone) {
 		this.endereco = endereco;
 		this.nome = nome;
 		this.telefone = telefone;

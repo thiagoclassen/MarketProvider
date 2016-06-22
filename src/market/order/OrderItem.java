@@ -1,22 +1,21 @@
 package market.order;
 
-import market.product.Product;
+import market.item.Item;
 
 public class OrderItem {
 	
-	private Product product;
+	private Item product;
 	private int qtd;
 	
-	public OrderItem(Product product, int qtd) {
-		super();
+	public OrderItem(Item product, int qtd) {
 		this.product = product;
 		this.qtd = qtd;
 	}
 	
-	public Product getProduct() {
+	public Item getProduct() {
 		return product;
 	}
-	public void setProduct(Product product) {
+	public void setProduct(Item product) {
 		this.product = product;
 	}
 	public int getQtd() {
@@ -25,7 +24,5 @@ public class OrderItem {
 	public void setQtd(int qtd) {
 		this.qtd = qtd;
 	}
-	
-	
 
 }
