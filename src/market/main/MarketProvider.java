@@ -2,11 +2,15 @@ package market.main;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+
+import market.client.Adress;
+import market.client.Client;
 
 public class MarketProvider {
 	
@@ -20,10 +24,12 @@ public class MarketProvider {
 			JSONObject jsonObject = (JSONObject) obj;
 			
 			JSONArray list = (JSONArray)jsonObject.get("items");
-			
+			ArrayList<Client> clientes = new ArrayList<Client>();
 			 Iterator<JSONObject> iterator = list.iterator();
 	            while (iterator.hasNext()) {
-	                System.out.println(iterator.next().get("telefone"));
+	            	JSONObject teste = iterator.next();
+	            	
+	            	clientes.add(new Client(new Adress("asd", 22, 22, "asd", "asd"), (String)teste.get("nome"), Long.toString((long)teste.get("telefone"))));
 	            }
 			System.out.println();
 			
