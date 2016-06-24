@@ -1,0 +1,26 @@
+{ "items":
+    [
+        {
+            "nome": "",
+            "telefone": 1,
+            "endereco": {
+                "rua": "",
+                "nr": 1,
+                "cep": 1,
+                "bairro": "",
+                "cidade": ""
+            }
+        },
+        {
+            "nome": "",
+            "telefone": 1,
+            "endereco": {
+                "rua": "",
+                "nr": 1,
+                "cep": 1,
+                "bairro": "",
+                "cidade": ""
+            }
+        }
+    ]
+}
