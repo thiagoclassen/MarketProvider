@@ -26,8 +26,24 @@ public class Order {
 		return soma;
 	}
 	
+//	public int getCarga(){
+//		int carga = 0;
+//		for(OrderItem item:items){
+//			carga +=item.getQtd()*item.getProduct().getPeso();
+//		}
+//		return carga;
+//	}
+	
 	public void addOrderItem(OrderItem Item){
 		items.add(Item);
+	}
+
+	public ArrayList<OrderItem> getItems() {
+		return items;
+	}
+
+	public void setItems(ArrayList<OrderItem> items) {
+		this.items = items;
 	}
 
 	public Client getClient() {

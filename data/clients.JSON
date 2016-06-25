@@ -5,11 +5,11 @@
             "nome": "Mercadorama",
             "cnpj": "000.000.000-0001",
             "endereco": {
-                "cidade": "",
-                "bairro": "",
+                "cidade": "Curitiba",
+                "bairro": "Portao",
                 "nr": "123",
                 "cep": "987654",
-                "rua": ""
+                "rua": "Sete de setembro"
             }
         },
         {

@@ -4,8 +4,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import javax.swing.text.DateFormatter;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -13,6 +19,7 @@ import org.json.simple.parser.JSONParser;
 
 import market.client.Address;
 import market.client.Client;
+import market.delivery.Veiculo;
 import market.item.Item;
 
 /**
@@ -154,6 +161,77 @@ public class FileManager {
 		} catch (IOException e) {
 			System.out.println("FileManager | writeItems: " + e);
 		}		
+	}
+
+	@SuppressWarnings("unchecked")
+	public static ArrayList<Veiculo> loadVeiculos() {
+		JSONParser parser = new JSONParser();
+		ArrayList<Veiculo> veiculos = new ArrayList<Veiculo>();
+
+		String placa = new String();
+		String marca = new String();
+		String cor = new String();
+		String entrega = new String();
+		int capacidade = 0;
+
+		try {
+			Object obj = parser.parse(new FileReader("data/veiculos.JSON"));
+			JSONObject jsonObject = (JSONObject) obj;
+			JSONArray list = (JSONArray) jsonObject.get("veiculos");
+
+			Iterator<JSONObject> iterator = list.iterator();
+			
+			while (iterator.hasNext()) {
+				JSONObject item = iterator.next();
+				placa = (String) item.get("placa");
+				marca = (String) item.get("marca");
+				cor = (String) item.get("cor");
+				capacidade = (int)(long)item.get("capacidade");
+				entrega = String.valueOf(item.get("entrega"));
+				
+				Veiculo veiculo = new Veiculo(placa, marca, cor, capacidade);
+				
+				if(!entrega.matches("null")){
+					veiculo.setEntrega(new Date(Long.valueOf(entrega)));
+				}else{
+					veiculo.setEntrega(null);
+				}
+
+				veiculos.add(veiculo);
+			}
+
+		} catch (org.json.simple.parser.ParseException | IOException pe) {
+			System.out.println("FileManager | loadVeiculos: " + pe);
+		}
+
+		return veiculos;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static void writeVeiculos(ArrayList<Veiculo> veiculos) {
+		JSONArray its = new JSONArray();
+		for(Veiculo veiculo : veiculos){
+			JSONObject obj = new JSONObject();
+			obj.put("placa", veiculo.getPlaca());
+			obj.put("marca", veiculo.getMarca());
+			obj.put("cor", veiculo.getCor());
+			obj.put("entrega", veiculo.getEntrega() == null? "null": veiculo.getEntrega().getTime());
+			obj.put("capacidade", veiculo.getCapacidade());
+			its.add(obj);
+		}
+		
+		
+		
+		JSONObject obj = new JSONObject();
+		obj.put("veiculos", its);
+ 
+		try (FileWriter file = new FileWriter("data/veiculos.JSON")) {
+			file.write(obj.toJSONString());
+			System.out.println("Successfully Copied JSON Object to File...");
+			System.out.println("\nJSON Object: " + obj);
+		} catch (IOException e) {
+			System.out.println("FileManager | writeItems: " + e);
+		}
 	}
 		
 }

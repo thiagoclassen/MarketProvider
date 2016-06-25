@@ -1,0 +1,39 @@
+{
+    "veiculos": [
+        {
+            "cor": "Branco",
+            "placa": "ABC-0123",
+            "marca": "VW",
+            "capacidade": 3000,
+            "entrega": 1466909999571
+        },
+        {
+            "cor": "Azul",
+            "placa": "QWE-6547",
+            "marca": "VW",
+            "capacidade": 1000,
+            "entrega": 1466909999627
+        },
+        {
+            "cor": "Vermelho",
+            "placa": "ASD-9876",
+            "marca": "Ford",
+            "capacidade": 1500,
+            "entrega": 1466909999517
+        },
+        {
+            "cor": "Cinza",
+            "placa": "JKL-6540",
+            "marca": "Merceds",
+            "capacidade": 5000,
+            "entrega": 1466909999014
+        },
+        {
+            "cor": "preto",
+            "placa": "ZXC-9874",
+            "marca": "Merceds",
+            "capacidade": 4000,
+            "entrega": 1466909999274
+        }
+    ]
+}
