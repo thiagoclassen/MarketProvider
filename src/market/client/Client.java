@@ -2,16 +2,19 @@ package market.client;
 
 public class Client {
 	
-	private Adress endereco;
 	private String nome;
+	private String cnpj;
 	private String telefone;
+	private Adress endereco;
 	
 	
 	//TODO - Create Builder for Address
-	public Client(Adress endereco, String nome, String telefone) {
-		this.endereco = endereco;
+	public Client(String nome, String cnpj, String telefone, Adress endereco) {
+		super();
 		this.nome = nome;
+		this.cnpj = cnpj;
 		this.telefone = telefone;
+		this.endereco = endereco;
 	}
 	
 	public Adress getEndereco() {
@@ -31,6 +34,14 @@ public class Client {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public String getCNPJ() {
+		return cnpj;
+	}
+
+	public void setCNPJ(String cNPJ) {
+		cnpj = cNPJ;
 	}
 
 }

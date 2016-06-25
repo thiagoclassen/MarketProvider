@@ -1,0 +1,52 @@
+{ "clients":
+    [
+        {
+            "nome": "Mercadorama",
+            "cnpj": "000.000.000-0001",
+            "telefone": "1234-5478",
+            "endereco": {
+                "rua": "rua XV",
+                "nr": "123",
+                "cep": "987654",
+                "bairro": "",
+                "cidade": "Cascavel"
+            }
+        },
+        {
+            "nome": "Mercado Condor",
+            "cnpj": "000.123.000-0001",
+            "telefone": "1234-5478",
+            "endereco": {
+                "rua": "rua XVBB",
+                "nr": "123",
+                "cep": "1",
+                "bairro": "",
+                "cidade": "Cascavel"
+            }
+        },
+        {
+            "nome": "Mercado Carrefour",
+            "cnpj": "000.000.000-0001",
+            "telefone": "1234-5478",
+            "endereco": {
+                "rua": "rua XV",
+                "nr": "123",
+                "cep": "1",
+                "bairro": "",
+                "cidade": "Cascavel"
+            }
+        },
+        {
+            "nome": "Mercado",
+            "cnpj": "000.000.000-0001",
+            "telefone": "1234-5478",
+            "endereco": {
+                "rua": "rua XV",
+                "nr": "123",
+                "cep": "1",
+                "bairro": "",
+                "cidade": "Cascavel"
+            }
+        }
+    ]
+}

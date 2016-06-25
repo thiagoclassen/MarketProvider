@@ -1,26 +1,39 @@
-{ "items":
-    [
+{
+    "items": [
         {
-            "nome": "eeee",
-            "telefone": 1,
-            "endereco": {
-                "rua": "",
-                "nr": 1,
-                "cep": 1,
-                "bairro": "",
-                "cidade": ""
-            }
+            "nome": "banana",
+            "tipo": "kg",
+            "preco": 0
         },
         {
-            "nome": "asd",
-            "telefone": 2,
-            "endereco": {
-                "rua": "",
-                "nr": 1,
-                "cep": 1,
-                "bairro": "",
-                "cidade": ""
-            }
+            "nome": "maca",
+            "tipo": "kg",
+            "preco": 0
+        },
+        {
+            "nome": "uva roxa",
+            "tipo": "cx",
+            "preco": 0
+        },
+        {
+            "nome": "arroz",
+            "tipo": "saco",
+            "preco": 0
+        },
+        {
+            "nome": "batata",
+            "tipo": "saco",
+            "preco": 0
+        },
+        {
+            "nome": "alface",
+            "tipo": "kg",
+            "preco": 0
+        },
+        {
+            "nome": "repolho",
+            "tipo": "kg",
+            "preco": 0
         }
     ]
 }

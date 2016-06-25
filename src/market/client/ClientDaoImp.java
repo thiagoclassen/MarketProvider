@@ -2,19 +2,30 @@ package market.client;
 
 import java.util.ArrayList;
 
+import market.data.FileManager;
+
 public class ClientDaoImp implements ClientDao {
-	
-	private ArrayList<Client> clients;
-	
-	public ClientDaoImp() {
-		// TODO Auto-generated constructor stub
+
+	private static ArrayList<Client> clients;
+
+	private static ClientDaoImp instance = null;
+
+	public static ClientDaoImp getInstance() {
+
+		if (instance == null) {
+			instance = new ClientDaoImp();
+			clients = FileManager.loadClients();
+		}
+		return instance;
+	}
+
+	private ClientDaoImp() {
 		clients = new ArrayList<Client>();
 	}
-	
+
 	@Override
 	public ArrayList<Client> getAllClients() {
-		// TODO Auto-generated method stub
-		return null;
+		return clients;
 	}
 
 	@Override
