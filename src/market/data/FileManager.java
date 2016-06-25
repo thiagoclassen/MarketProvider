@@ -11,7 +11,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import market.client.Adress;
+import market.client.Address;
 import market.client.Client;
 import market.item.Item;
 
@@ -63,7 +63,7 @@ public class FileManager {
 		String nome = new String();
 		String cnpj = new String();
 		String telefone = new String();
-		Adress endereco = null;
+		Address endereco = null;
 
 		try {
 			Object obj = parser.parse(new FileReader("data/clients.JSON"));
@@ -79,7 +79,7 @@ public class FileManager {
 				telefone = (String) client.get("telefone");
 				
 				JSONObject address = (JSONObject) client.get("endereco");
-				endereco = new Adress.Builder()
+				endereco = new Address.Builder()
 							.rua((String) address.get("rua"))
 							.nr((String)address.get("nr"))
 							.cep((String)address.get("cep"))

@@ -5,20 +5,19 @@ public class Client {
 	private String nome;
 	private String cnpj;
 	private String telefone;
-	private Adress endereco;
+	private Address endereco;
 	
-	public Client(String nome, String cnpj, String telefone, Adress endereco) {
-		super();
+	public Client(String nome, String cnpj, String telefone, Address endereco) {
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.telefone = telefone;
 		this.endereco = endereco;
 	}
 	
-	public Adress getEndereco() {
+	public Address getEndereco() {
 		return endereco;
 	}
-	public void setEndereco(Adress endereco) {
+	public void setEndereco(Address endereco) {
 		this.endereco = endereco;
 	}
 	public String getNome() {
