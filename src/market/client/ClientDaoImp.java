@@ -29,21 +29,34 @@ public class ClientDaoImp implements ClientDao {
 	}
 
 	@Override
-	public void addClient(Client client) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void updateClient(Client client) {
-		// TODO Auto-generated method stub
+		// TODO - throw error if the client doesn't exists
+		int pos = clients.indexOf(client);
+		if (pos != -1) {
+			clients.set(pos, client);
+			writeClients();
+		}
 
 	}
 
 	@Override
 	public void deleteClient(Client client) {
-		// TODO Auto-generated method stub
+		// TODO - throw error if the client doesn't exists
+		int pos = clients.indexOf(client);
+		if (pos != -1) {
+			clients.remove(pos);
+			writeClients();
+		}
+	}
 
+	@Override
+	public void addClient(Client client) {
+		clients.add(client);
+		writeClients();
+	}
+
+	private void writeClients() {
+		FileManager.writeClients(clients);
 	}
 
 }

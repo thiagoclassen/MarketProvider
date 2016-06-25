@@ -7,8 +7,6 @@ public class Client {
 	private String telefone;
 	private Adress endereco;
 	
-	
-	//TODO - Create Builder for Address
 	public Client(String nome, String cnpj, String telefone, Adress endereco) {
 		super();
 		this.nome = nome;

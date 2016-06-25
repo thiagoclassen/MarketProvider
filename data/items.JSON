@@ -1,39 +1,44 @@
 {
     "items": [
         {
-            "nome": "banana",
+            "preco": 0.0,
             "tipo": "kg",
-            "preco": 0
+            "nome": "banana"
         },
         {
-            "nome": "maca",
+            "preco": 0.0,
             "tipo": "kg",
-            "preco": 0
+            "nome": "maca"
         },
         {
-            "nome": "uva roxa",
+            "preco": 0.0,
             "tipo": "cx",
-            "preco": 0
+            "nome": "uva roxa"
         },
         {
-            "nome": "arroz",
+            "preco": 0.0,
             "tipo": "saco",
-            "preco": 0
+            "nome": "arroz"
         },
         {
-            "nome": "batata",
+            "preco": 0.0,
             "tipo": "saco",
-            "preco": 0
+            "nome": "batata"
         },
         {
-            "nome": "alface",
+            "preco": 0.0,
             "tipo": "kg",
-            "preco": 0
+            "nome": "alface"
         },
         {
-            "nome": "repolho",
+            "preco": 0.0,
             "tipo": "kg",
-            "preco": 0
+            "nome": "repolho"
+        },
+        {
+            "preco": 0.0,
+            "tipo": "kg",
+            "nome": "Abacate"
         }
     ]
 }

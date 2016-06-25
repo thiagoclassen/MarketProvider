@@ -28,11 +28,11 @@ public class Adress {
 			return this;
 		}
 		public Builder bairro(String bairro) {
-			this.rua = bairro;
+			this.bairro = bairro;
 			return this;
 		}
 		public Builder cidade(String cidade) {
-			this.rua = cidade;
+			this.cidade = cidade;
 			return this;
 		}
 		public Adress build() {

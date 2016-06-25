@@ -34,6 +34,7 @@ public class ItemDaoImp implements ItemDao{
 		int pos = items.indexOf(item);
 		if(pos != -1){
 			items.set(pos, item);
+			writeItems();
 		}
 	}
 
@@ -43,13 +44,18 @@ public class ItemDaoImp implements ItemDao{
 		int pos = items.indexOf(item);
 		if(pos != -1){
 			items.remove(pos);
+			writeItems();
 		}
 	}
 
 	@Override
 	public void addItem(Item item) {
 		items.add(item);
-		
+		writeItems();
+	}
+	
+	private void writeItems(){
+		FileManager.writeItems(items);
 	}
 
 }
