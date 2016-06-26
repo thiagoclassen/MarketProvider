@@ -1,6 +1,9 @@
 package market.client;
 
-public class Address {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Address implements Serializable{
 	
 	private String rua;
 	private String nr;

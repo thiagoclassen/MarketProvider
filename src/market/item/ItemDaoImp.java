@@ -49,9 +49,10 @@ public class ItemDaoImp implements ItemDao{
 	}
 
 	@Override
-	public void addItem(Item item) {
+	public int addItem(Item item) {
 		items.add(item);
 		writeItems();
+		return items.indexOf(item);
 	}
 	
 	private void writeItems(){

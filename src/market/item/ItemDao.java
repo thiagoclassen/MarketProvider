@@ -6,5 +6,5 @@ public interface ItemDao {
 	ArrayList<Item>getAllItems();
 	void updateItem(Item item);
 	void deleteItem(Item item);
-	void addItem(Item item);
+	int addItem(Item item);
 }

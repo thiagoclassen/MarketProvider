@@ -50,9 +50,10 @@ public class ClientDaoImp implements ClientDao {
 	}
 
 	@Override
-	public void addClient(Client client) {
+	public int addClient(Client client) {
 		clients.add(client);
 		writeClients();
+		return clients.indexOf(client);
 	}
 
 	private void writeClients() {

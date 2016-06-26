@@ -1,8 +1,11 @@
 package market.order;
 
+import java.io.Serializable;
+
 import market.item.Item;
 
-public class OrderItem {
+@SuppressWarnings("serial")
+public class OrderItem implements Serializable{
 	
 	private Item product;
 	private int qtd;

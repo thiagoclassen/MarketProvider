@@ -1,14 +1,15 @@
 package market.item;
 
-import java.math.BigDecimal;
+import java.io.Serializable;
 
-public class Item {
+@SuppressWarnings("serial")
+public class Item implements Serializable{
 	
 	private String nome;
 	private String tipo;
-	private BigDecimal preco;
+	private double preco;
 	
-	public Item(String nome, String tipo, BigDecimal preco) {
+	public Item(String nome, String tipo, double preco) {
 		this.nome = nome;
 		this.tipo = tipo;
 		this.preco = preco;
@@ -26,10 +27,10 @@ public class Item {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public BigDecimal getPreco() {
+	public double getPreco() {
 		return preco;
 	}
-	public void setPreco(BigDecimal preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 

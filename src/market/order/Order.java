@@ -1,12 +1,13 @@
 package market.order;
 
-import java.math.BigDecimal;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 import market.client.Client;
 
-public class Order {
+@SuppressWarnings("serial")
+public class Order implements Serializable{
 	
 	private ArrayList<OrderItem> items;
 	private Client client;
@@ -18,10 +19,10 @@ public class Order {
 		this.setDate(new Date());
 	}
 
-	public BigDecimal getTotal(){
-		BigDecimal soma = BigDecimal.valueOf(0);
+	public double getTotal(){
+		double soma = 0;
 		for(OrderItem item:items){
-			soma = soma.add(item.getProduct().getPreco().multiply(new BigDecimal(item.getQtd())));
+			soma += item.getProduct().getPreco()*item.getQtd();
 		}
 		return soma;
 	}

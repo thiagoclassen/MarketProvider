@@ -1,6 +1,9 @@
 package market.client;
 
-public class Client {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Client implements Serializable{
 	
 	private String nome;
 	private String cnpj;

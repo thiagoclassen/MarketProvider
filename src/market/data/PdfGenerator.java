@@ -3,8 +3,6 @@ package market.data;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.math.BigDecimal;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -15,13 +13,10 @@ import market.order.OrderItem;
 
 public class PdfGenerator {
 
-	@SuppressWarnings("deprecation")
-	public static void create(Order order) {
+	public static void create(Order order, String fileName) {
 
-		String date = new String(
-				order.getDate().getDate() + "-" + (order.getDate().getMonth() + 1) + "-" + order.getDate().getYear());
-
-		String filename = new String("data/" + order.getClient().getNome() + "-" + date + ".pdf");
+		String path = new String("pdf/" + fileName + ".pdf");
+		String filename = new String(path);
 
 		try {
 			FileOutputStream os = new FileOutputStream(new File(filename));
@@ -38,20 +33,25 @@ public class PdfGenerator {
 			
 			for (OrderItem item : order.getItems()) {
 				document.add(new Paragraph(item.getQtd() + " x " + item.getProduct().getNome() + ", Preço: R$"
-						+ item.getProduct().getPreco().toString() + "/" + item.getProduct().getTipo() + ", Total: R$"
-						+ item.getProduct().getPreco().multiply(BigDecimal.valueOf(item.getQtd()))));
+						+ item.getProduct().getPreco() + "/" + item.getProduct().getTipo() + ", Total: R$"
+						+ item.getProduct().getPreco()*item.getQtd()));
 			}
 			
 			document.add(new Paragraph());
 			
-			document.add(new Paragraph("Total: R$"+order.getTotal().toString()));
+			document.add(new Paragraph("Total: R$"+order.getTotal()));
 
 			document.close();
 
+			System.out.println();
+			System.out.println("Lista salva como pdf em: "+path);
+			System.out.println();
+			
 		} catch (FileNotFoundException | DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
 }
