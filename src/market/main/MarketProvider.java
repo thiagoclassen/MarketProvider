@@ -10,6 +10,7 @@ import market.data.FileManager;
 import market.data.PdfGenerator;
 import market.delivery.Entrega;
 import market.delivery.Veiculo;
+import market.delivery.VeiculoDaoImp;
 import market.item.Item;
 import market.item.ItemDaoImp;
 import market.order.Order;
@@ -99,8 +100,9 @@ public class MarketProvider {
 		do {
 			System.out.println("1 - Nova Order.");
 			System.out.println("2 - Carregar Order.");
-			System.out.println("3 - Estatisticas.");
-			System.out.println("4 - Sair.");
+			System.out.println("3 - Adicionar Veiculo.");
+			System.out.println("4 - Estatisticas.");
+			System.out.println("5 - Sair.");
 
 			op = s.nextInt();
 
@@ -111,11 +113,27 @@ public class MarketProvider {
 			case 2:
 				novaCompra(FileManager.readOrder());
 				break;
+			case 3:
+				novoVeiculo();
+				break;
 			default:
 				break;
 			}
-		} while (op != 4);
+		} while (op != 5);
 
+	}
+
+	private static void novoVeiculo() {
+		Scanner s = new Scanner(System.in);
+		
+		System.out.println("Placa do veiculo:");
+		String placa = s.nextLine();
+		System.out.println("Marca do veiculo:");
+		String marca = s.nextLine();
+		System.out.println("Cor do veiculo:");
+		String cor = s.nextLine();
+		
+		VeiculoDaoImp.getInstance().addVeiculo(new Veiculo(placa, marca, cor, 0));
 	}
 
 	public static void novaCompra(Order o) {
