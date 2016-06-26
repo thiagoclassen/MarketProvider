@@ -7,22 +7,22 @@ import market.data.FileManager;
 import market.order.Order;
 import market.order.OrderItem;
 
-public class statisticCotrol {
+public class StatisticControl {
 
 	private static ArrayList<ItemData> itemsData;
 	
-	private static statisticCotrol instance;
+	private static StatisticControl instance;
 
-	public static statisticCotrol getInstance(){
+	public static StatisticControl getInstance(){
 		
 		if (instance == null) {
-			instance = new statisticCotrol();
+			instance = new StatisticControl();
 			itemsData = FileManager.loadItemData();
 		}
 		return instance;
 	}
 	
-	private statisticCotrol() {
+	private StatisticControl() {
 		itemsData = new ArrayList<ItemData>();
 	}
 

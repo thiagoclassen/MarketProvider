@@ -278,7 +278,7 @@ public class FileManager {
 		} catch (ClassNotFoundException | IOException e) {
 			System.out.println("FileManager | readOrder: " + e.toString());
 		}
-		return null;
+		return new ArrayList<ItemData>();
 	}
 
 	public static void writeItemData(ArrayList<ItemData> itemsData) {
