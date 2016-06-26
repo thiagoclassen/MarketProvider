@@ -22,6 +22,7 @@ import market.client.Client;
 import market.delivery.Veiculo;
 import market.item.Item;
 import market.order.Order;
+import market.statistic.ItemData;
 
 /**
  * @author Thiago
@@ -260,6 +261,34 @@ public class FileManager {
 			System.out.println("FileManager | readOrder: " + e.toString());
 		}
 		return null;
+	}
+
+	public static ArrayList<ItemData> loadItemData() {
+		try {
+			ArrayList<Object> order = new ArrayList<Object>();
+			FileInputStream fis = new FileInputStream("stats/itemData.ser");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			while (true) {
+				order.add(ois.readObject());
+				return (ArrayList<ItemData>) order.get(0);
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("Arquivo não encontrado.");
+		} catch (ClassNotFoundException | IOException e) {
+			System.out.println("FileManager | readOrder: " + e.toString());
+		}
+		return null;
+	}
+
+	public static void writeItemData(ArrayList<ItemData> itemsData) {
+		try {
+			FileOutputStream fout = new FileOutputStream("stats/itemData.ser");
+			ObjectOutputStream oos = new ObjectOutputStream(fout);
+			oos.writeObject(itemsData);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

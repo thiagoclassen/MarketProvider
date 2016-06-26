@@ -15,6 +15,7 @@ import market.item.Item;
 import market.item.ItemDaoImp;
 import market.order.Order;
 import market.order.OrderItem;
+import market.statistic.statisticCotrol;
 
 public class MarketProvider {
 
@@ -116,7 +117,8 @@ public class MarketProvider {
 			case 3:
 				novoVeiculo();
 				break;
-			default:
+			case 4:
+				statisticCotrol.getInstance().printData();
 				break;
 			}
 		} while (op != 5);
@@ -185,6 +187,8 @@ public class MarketProvider {
 		Entrega entrega = new Entrega();
 
 		PdfGenerator.create(order, fileName);
+		
+		statisticCotrol.getInstance().includeOrder(order);
 
 		Veiculo v = entrega.alocarEntrega(order);
 		System.out.println();

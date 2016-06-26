@@ -5,9 +5,9 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Item implements Serializable{
 	
-	private String nome;
-	private String tipo;
-	private double preco;
+	protected String nome;
+	protected String tipo;
+	protected double preco;
 	
 	public Item(String nome, String tipo, double preco) {
 		this.nome = nome;
