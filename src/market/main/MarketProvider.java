@@ -1,6 +1,7 @@
 package market.main;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import market.client.Address.Builder;
@@ -87,9 +88,9 @@ public class MarketProvider {
 		// }
 
 		// FileManager.readOrder();
-//		ClientDaoImp clientDao = ClientDaoImp.getInstance();
-//		ItemDaoImp itemDao = ItemDaoImp.getInstance();
-//		VeiculoDaoImp veiculoDao = VeiculoDaoImp.getInstance();
+		// ClientDaoImp clientDao = ClientDaoImp.getInstance();
+		// ItemDaoImp itemDao = ItemDaoImp.getInstance();
+		// VeiculoDaoImp veiculoDao = VeiculoDaoImp.getInstance();
 
 		menu();
 	}
@@ -99,27 +100,31 @@ public class MarketProvider {
 		Scanner s = new Scanner(System.in);
 		int op = 0;
 		do {
-			System.out.println("1 - Nova Order.");
-			System.out.println("2 - Carregar Order.");
-			System.out.println("3 - Adicionar Veiculo.");
-			System.out.println("4 - Estatisticas.");
-			System.out.println("5 - Sair.");
+			try {
+				System.out.println("1 - Nova Order.");
+				System.out.println("2 - Carregar Order.");
+				System.out.println("3 - Adicionar Veiculo.");
+				System.out.println("4 - Estatisticas.");
+				System.out.println("5 - Sair.");
 
-			op = s.nextInt();
+				op = s.nextInt();
 
-			switch (op) {
-			case 1:
-				novaCompra(new Order());
-				break;
-			case 2:
-				novaCompra(FileManager.readOrder());
-				break;
-			case 3:
-				novoVeiculo();
-				break;
-			case 4:
-				StatisticControl.getInstance().printData();
-				break;
+				switch (op) {
+				case 1:
+					novaCompra(new Order());
+					break;
+				case 2:
+					novaCompra(FileManager.readOrder());
+					break;
+				case 3:
+					novoVeiculo();
+					break;
+				case 4:
+					StatisticControl.getInstance().printData();
+					break;
+				}
+			} catch (InputMismatchException e) {
+				s = new Scanner(System.in);
 			}
 		} while (op != 5);
 
@@ -127,14 +132,14 @@ public class MarketProvider {
 
 	private static void novoVeiculo() {
 		Scanner s = new Scanner(System.in);
-		
+
 		System.out.println("Placa do veiculo:");
 		String placa = s.nextLine();
 		System.out.println("Marca do veiculo:");
 		String marca = s.nextLine();
 		System.out.println("Cor do veiculo:");
 		String cor = s.nextLine();
-		
+
 		VeiculoDaoImp.getInstance().addVeiculo(new Veiculo(placa, marca, cor, 0));
 	}
 
@@ -146,28 +151,32 @@ public class MarketProvider {
 		Scanner s = new Scanner(System.in);
 		int op = 0;
 		do {
-			System.out.println("1 - Adicionar Item.");
-			System.out.println("2 - Selecionar Cliente.");
-			System.out.println("3 - Ver Lista de compras.");
-			System.out.println("4 - Finalizar Lista.");
-			System.out.println("5 - Sair.(a compra atual será perdida)");
+			try {
+				System.out.println("1 - Adicionar Item.");
+				System.out.println("2 - Selecionar Cliente.");
+				System.out.println("3 - Ver Lista de compras.");
+				System.out.println("4 - Finalizar Lista.");
+				System.out.println("5 - Sair.(a compra atual será perdida)");
 
-			op = s.nextInt();
+				op = s.nextInt();
 
-			switch (op) {
-			case 1:
-				order.addOrderItem(adicionarItem());
-				break;
-			case 2:
-				order.setClient(selecionarClient());
-				break;
-			case 3:
-				printOrder(order);
-				break;
-			case 4:
-				finishOrder(order);
-				op = 5;
-				break;
+				switch (op) {
+				case 1:
+					order.addOrderItem(adicionarItem());
+					break;
+				case 2:
+					order.setClient(selecionarClient());
+					break;
+				case 3:
+					printOrder(order);
+					break;
+				case 4:
+					finishOrder(order);
+					op = 5;
+					break;
+				}
+			} catch (InputMismatchException e) {
+				s = new Scanner(System.in);
 			}
 
 		} while (op != 5);
@@ -187,7 +196,7 @@ public class MarketProvider {
 		Entrega entrega = new Entrega();
 
 		PdfGenerator.create(order, fileName);
-		
+
 		StatisticControl.getInstance().includeOrder(order);
 
 		Veiculo v = entrega.alocarEntrega(order);
@@ -218,7 +227,11 @@ public class MarketProvider {
 
 		do {
 			System.out.println("Indice do Cliente ou -1 para criar um novo.");
-			op = s.nextInt();
+			try{
+				op = s.nextInt();				
+			}catch(InputMismatchException e){
+				s = new Scanner(System.in);
+			}
 		} while (op < -1 && op > i);
 
 		if (op == -1) {
@@ -286,15 +299,20 @@ public class MarketProvider {
 	public static OrderItem adicionarItem() {
 		ArrayList<Item> list = ItemDaoImp.getInstance().getAllItems();
 		Scanner s = new Scanner(System.in);
-		int op = 0;
+		int op = -2;
 		int i;
 		for (i = 0; i < list.size(); i++) {
 			System.out.println(i + " - " + list.get(i).getNome() + "/" + list.get(i).getTipo());
 		}
 		do {
 			System.out.println("Entre com o codigo do item desejado ou -1 para adicionar um novo item a lista.");
-			op = s.nextInt();
-		} while (op < -1 && op > i);
+			try{
+				op = s.nextInt();
+			}catch(InputMismatchException e){
+				s = new Scanner(System.in);
+				op = -2;
+			}
+		} while (op < -1 || op > (i-1));
 
 		if (op == -1) {
 			op = criarNovoItem();
@@ -304,13 +322,23 @@ public class MarketProvider {
 		int qtd = 0;
 		do {
 			System.out.println("Quantidade:");
-			qtd = s.nextInt();
+			try{
+				qtd = s.nextInt();
+			}catch(InputMismatchException e){
+				s = new Scanner(System.in);
+				qtd = -1; 
+			}
 		} while (qtd < 0);
 
-		double preco = 0;
+		double preco = -1;
 		do {
 			System.out.println("preco/unidade:");
-			preco = s.nextDouble();
+			try{
+				preco = s.nextDouble();
+			}catch(InputMismatchException e){
+				s = new Scanner(System.in);
+				preco = -1;
+			}
 		} while (preco < 0);
 		OrderItem item = new OrderItem(list.get(op), qtd);
 		item.getProduct().setPreco(preco);

@@ -10,6 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -245,8 +246,8 @@ public class FileManager {
 	public static Order readOrder() {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Qual o nome do arquivo que deseja carregar?");
-		String fileName = s.nextLine();
 		try {
+		String fileName = s.nextLine();
 			ArrayList<Object> order = new ArrayList<Object>();
 			FileInputStream fis = new FileInputStream("orders/" + fileName + ".ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -259,6 +260,8 @@ public class FileManager {
 			System.out.println("Arquivo não encontrado.");
 		} catch (ClassNotFoundException | IOException e) {
 			System.out.println("FileManager | readOrder: " + e.toString());
+		} catch (InputMismatchException e){
+			s = new Scanner(System.in);
 		}
 		return null;
 	}
